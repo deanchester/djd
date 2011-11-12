@@ -3,7 +3,7 @@ color colours[];
 Write write;
 BBox backnNext[] = new BBox[2];
 boolean[] tabFlags = new boolean[3];
-BBox tabs = new BBox[3];
+BBox[] tabs = new BBox[3];
 
 String[] answers ={"answer1","answer2","answer3","answer4","answer5"};
 int answerCount = 0;
@@ -78,9 +78,9 @@ void setup()
   /**** navButton BBox's ****/
   
   /**** tag BBox's ****/
-  tabs[0] = new BBox(width/2-180, 607);
-  tabs[1] = new BBox(width/2-64, 607);
-  tabs[2] = new BBox(width/2+52, 607);
+  tabs[0] = new BBox(width/2-180, 607,gender.width,gender.height);
+  tabs[1] = new BBox(width/2-64, 607,age.width,age.height);
+  tabs[2] = new BBox(width/2+52, 607,social_class.width, social_class.height);
   /**** tag BBox's ****/
   
 }
@@ -103,8 +103,11 @@ void draw()
   chart.draw(595,598,40,40);
   fill(49,49,49);
   
+  //rollover
   for(int i=0; i<tabs.length; i++){
-     
+     if(tabs[i].isOver(mouseX,mouseY)){
+        //display image 2 
+     }
   }
   
   if(dist(mouseX, mouseY, width/2,height/2-60)<=250)
@@ -147,5 +150,14 @@ void initialise()
            answerCount++; 
          }
        }
+    }
+    for(int i=0; i<tabs.length; i++){
+      if(tabs[i].isOver(mouseX,mouseY)){
+         if(tabFlags[i]==false){
+            tabFlags[i]=true;
+         }else{
+            tabFlags[i]=true;
+         }
+      }      
     }
   }
