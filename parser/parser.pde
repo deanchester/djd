@@ -6,7 +6,7 @@ class Parser{
   */
   public ArrayList<Data> getInformationFromTableInCSV(String fileName){
     ArrayList<Data> dataList = new ArrayList<Data>();
-    String[] rawInput = loadStrings(fileName);
+    rawInput = loadStrings(fileName);
     for(int i = 6; i < rawInput.length; i=i+2) {
       String information = rawInput[i];
       String[] partsOfInformation = split(information, ','); 
