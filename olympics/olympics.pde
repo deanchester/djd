@@ -154,9 +154,22 @@ void initialise()
     for(int i=0; i<tabs.length; i++){
       if(tabs[i].isOver(mouseX,mouseY)){
          if(tabFlags[i]==false){
-            tabFlags[i]=true;
+            switch(i){
+             case 0:{tabFlags[0]= true;
+                     tabFlags[1] = false;
+                     tabFlags[2] = false;
+                     }break;
+             case 1:{tabFlags[1]= true;
+                     tabFlags[0]= false;
+                     tabFlags[2]= false;
+                     }break;
+             case 2:{tabFlags[2]= true;
+                     tabFlags[0]= false;
+                     tabFlags[1]= false;
+                     }break;
+            }
          }else{
-            tabFlags[i]=true;
+            tabFlags[i]=false;
          }
       }      
     }
