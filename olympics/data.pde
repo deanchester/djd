@@ -1,87 +1,85 @@
 class Data {
-  
-   private int total;
-   private int london; 
-   private int south;
-   private int midlands;
-   private int north;
-   private int scotland;
-   private int male;
-   private int female;
-   private int young;
-   private int middleAged;
-   private int old;
-   private int upperClass;
-   private int lowerClass;
-   
-  Data(int total, int london, int south, int midlands, int north, int scotland,
-        int male, int female, int young, int middleAged, int old, int upperClass,
-          int lowerClass){
-     this.total = total;
-     this.london = london;
-     this.south = south; 
-     this.midlands = midlands; 
-     this.north = north; 
-     this.scotland = scotland;
-     this.male = male;
-     this.female = female;
-     this.young = young;
-     this.middleAged = middleAged; 
-     this.old = old; 
-     this.upperClass = upperClass;
-     this.lowerClass = lowerClass;      
-     }
-     
-  public int getTotal(){
+  private int total;
+  private int london; 
+  private int south;
+  private int midlands;
+  private int north;
+  private int scotland;
+  private int male;
+  private int female;
+  private int young;
+  private int middleAged;
+  private int old;
+  private int upperClass;
+  private int lowerClass;
+
+  Data(int total, int london, int south, int midlands, int north, int scotland, 
+  int male, int female, int young, int middleAged, int old, int upperClass, 
+  int lowerClass) {
+    this.total = total;
+    this.london = london;
+    this.south = south; 
+    this.midlands = midlands; 
+    this.north = north; 
+    this.scotland = scotland;
+    this.male = male;
+    this.female = female;
+    this.young = young;
+    this.middleAged = middleAged; 
+    this.old = old; 
+    this.upperClass = upperClass;
+    this.lowerClass = lowerClass;
+  }
+
+  public int getTotal() {
     return total;
   }
-  
-  public int getLondon(){
+
+  public int getLondon() {
     return london;
   }
-  
-  public int getSouth(){
+
+  public int getSouth() {
     return south;
   }
-  
-  public int getMidlands(){
+
+  public int getMidlands() {
     return midlands;
   }
-  
-  public int getNorth(){
+
+  public int getNorth() {
     return north;
   }
-  
-  public int getScotland(){
-    return Scotland;
+
+  public int getScotland() {
+    return scotland;
   }
-   
-  public int getMale(){
+
+  public int getMale() {
     return male;
   }   
 
-  public int getFemale(){
+  public int getFemale() {
     return female;
   }  
-  
-  public int getYoung(){
+
+  public int getYoung() {
     return young;
   }
-  
-  public int getMiddleAged(){
+
+  public int getMiddleAged() {
     return middleAged;
   }
-  
-  public int getOld(){
+
+  public int getOld() {
     return old;
   }
-  
-  public int getUpperClass(){
+
+  public int getUpperClass() {
     return upperClass;
   }
-  
-  public int getLowerClass(){
+
+  public int getLowerClass() {
     return lowerClass;
   }
-}
 }
