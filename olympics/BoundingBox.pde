@@ -5,7 +5,8 @@
   private int bHeight;
   private int bWidth;
   
- BBox(int tempTopLeftX, int tempTopLeftY,int tempBWidth, int tempBHeight){//ctor
+  //Constructor
+ BBox(int tempTopLeftX, int tempTopLeftY,int tempBWidth, int tempBHeight){
    this.topLeftX = tempTopLeftX;
    this.topLeftY = tempTopLeftY;
    this.bHeight = tempBHeight;
