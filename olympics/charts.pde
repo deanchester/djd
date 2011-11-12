@@ -1,5 +1,5 @@
 /*PIE CHART*/
-public class PieChart
+class PieChart
 {
    float[] chart_data;
    float data_total;
@@ -186,3 +186,4 @@ public class Line_Graph
      line(x,y+yLength,x,y);//Y Axis
   }
 }
+
