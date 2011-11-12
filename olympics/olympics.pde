@@ -145,11 +145,17 @@ void initialise()
   void mouseClicked(){
       for(int i=0; i<backnNext.length; i++){
        if(backnNext[i].isOver(mouseX,mouseY)){
-         if(answerCount==4){
-           answerCount = 0;
-         }
-         else{
-           answerCount++; 
+         switch(i){
+          case 0:{
+                  if(answerCount<4){
+                    answerCount++;
+                    }
+                 }break;
+          case 1:{
+                   if(answerCount>=1){
+                     answerCount--; 
+                    }
+                 }break; 
          }
        }
     }
