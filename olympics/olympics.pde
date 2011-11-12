@@ -2,6 +2,8 @@ ColourArray colourSet;
 color colours[];
 Write write;
 BBox backnNext[] = new BBox[2];
+
+//index 0:gender 1:age 2:social_class for both tabs[] and tabFlags[]
 boolean[] tabFlags = new boolean[3];
 BBox[] tabs = new BBox[3];
 
