@@ -131,6 +131,8 @@ void draw()
   image(Qup, 650, 0);
   image(Qdown, 650, 60);
   
+  PieChart chart = new PieChart(data);
+  
   chart.draw(width/2, height/2-60, 250, 250, true);
   ellipseMode(CENTER);
   rectMode(CENTER);
@@ -182,6 +184,8 @@ void draw()
   image(back, 130, 545);
   //Start the circular text.
   String message = dc.get(qCount).getQuestion();
+  
+  
   PFont font = loadFont("myriad.vlw");
   // The radius of a circle
   float r = 260;
