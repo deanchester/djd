@@ -23,7 +23,7 @@ String[] questions;
 BBox qUp;
 BBox qDown;
 
-ArrayList<Data> dataList;
+ArrayList<DataContainer> dataList;
 Parser parser;
 PieChart chart = new PieChart(data);
 PImage[] rollovers = new PImage[3];
@@ -43,7 +43,7 @@ void setup()
   background(255);
   initialise();
   parser = new Parser();
-  //dataList=parser.getInformationFromTableInCSV("question1.csv");
+  dataList=parser.getDataContainer();
   PieChart chart = new PieChart(data);
   ageOver = loadImage("age2.png");
   genderOver = loadImage("gender2.PNG");
