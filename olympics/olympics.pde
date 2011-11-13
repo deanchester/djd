@@ -5,6 +5,8 @@ BBox backnNext[] = new BBox[2];
 float arclength = 0;
 float theta = 0;
 
+int qCount=0;
+
 PImage Qup;
 PImage Qdown;
 PImage ukMap;
@@ -179,7 +181,7 @@ void draw()
   //Back Arrow
   image(back, 130, 545);
   //Start the circular text.
-  String message = dc.get(0).getQuestion();
+  String message = dc.get(qCount).getQuestion();
   PFont font = loadFont("myriad.vlw");
   // The radius of a circle
   float r = 260;
@@ -287,10 +289,13 @@ void mouseClicked() {
   //controlls question scrolling
     for(int k=0;k<2;k++){
       if(qUp.isOver(mouseX,mouseY)){
-        //question counter ++
+        qCount++;
       }
       else if(qDown.isOver(mouseX,mouseY)){
-        //question counter --
+        if(qCount!=0){
+          qCount--;
+        }
+        
       }  
     }
 }
