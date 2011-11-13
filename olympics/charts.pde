@@ -3,6 +3,7 @@ public class PieChart
 {
    float[] chart_data;
    float data_total;
+   boolean points = false;
    
    //Constructor accepts an int/float array of data values.
    PieChart(float[] data)
@@ -12,8 +13,9 @@ public class PieChart
    }
    
    //draw_chart(centerX, centerY, radius, alpha/transparency)
-   public void draw(int x, int y, int r, int a)
+   public void draw(int x, int y, int r, int a, boolean points)
    {
+     this.points = points;
      PImage pointer = loadImage("images/pointer.png");
      PFont font = loadFont("lindsey.vlw");
      textFont(font, 24); 
@@ -41,24 +43,19 @@ public class PieChart
          //Calculate the position on the outer circle of the graph.
          outerX = x+sin(p)*r;
          outerY = y+cos(p)*r;
-         if(current/(current+TWO_PI*percent) == 0.5)
-         {
-           //image(pointer, outerX, outerY); 
-         }
-         //Continue creating the edge.
+         
          vertex(outerX,outerY);
        }
-       //imageMode(CENTER);
-       //image(pointer, outerX, outerY); 
-       //imageMode(CORNER);
+
        endShape(CLOSE);
        fill(255);
 
-       /*percent *= 100;
-       percent = round(percent);
-       percent /= 100;
-       text(percent+"%", x+sin(current+(TWO_PI*percent/2))*r/2, y+cos(current+(TWO_PI*percent/2))*r/2);
-       */
+       if(this.points)
+       {
+         imageMode(CENTER);
+         image(pointer, x+sin(current+(TWO_PI*percent/2))*r, y+cos(current+(TWO_PI*percent/2))*r);
+         imageMode(CORNER);
+       }
        //Set current so that the next data item starts at the correct position.
        current += TWO_PI*percent;
      }

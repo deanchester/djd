@@ -25,7 +25,7 @@ String[] questions;
 BBox qUp;
 BBox qDown;
 
-ArrayList<DataContainer> dataList;
+ArrayList<Data> dataList;
 Parser parser;
 PieChart chart = new PieChart(data);
 PImage[] rollovers = new PImage[3];
@@ -45,7 +45,7 @@ void setup()
   background(255);
   initialise();
   parser = new Parser();
-  dataList=parser.getDataContainer();
+  //dataList=parser.getInformationFromTableInCSV("question1.csv");
   PieChart chart = new PieChart(data);
   ageOver = loadImage("age2.png");
   genderOver = loadImage("gender2.PNG");
@@ -77,7 +77,7 @@ void setup()
   image(social_class, width/2+52, 607);
 
   image(answer, width/2-200, 550);
-  chart.draw(595, 598, 40, 40);
+  chart.draw(595, 598, 40, 40, false);
   fill(49, 49, 49);
 
   //Draw in the display box and value.
@@ -127,7 +127,7 @@ void draw()
   image(Qup, 650, 0);
   image(Qdown, 650, 60);
   
-  chart.draw(width/2, height/2-60, 250, 250);
+  chart.draw(width/2, height/2-60, 250, 250, true);
   ellipseMode(CENTER);
   rectMode(CENTER);
   ellipse(width/2, height/2-60, 480, 480);
@@ -162,7 +162,7 @@ void draw()
   }
 
   image(answer, width/2-200, 550);
-  chart.draw(590, 598, 37, 37);
+  chart.draw(590, 598, 37, 37,false);
   fill(49, 49, 49);
 
   
