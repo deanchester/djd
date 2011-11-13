@@ -66,9 +66,10 @@
       String[] question = split(questionsStr, "\n");
       DataContainer dataContainer = new DataContainer(question[0], getAnswers("q"+i+".csv"), getInformationFromTableInCSV("q"+i+".csv"));
       dataContainers.add(dataContainer);
-      println(dataContainer.toString());
     }
+    println(dataContainers.size());
     return dataContainers;
+    
   }
 }
 

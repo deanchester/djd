@@ -10,7 +10,7 @@ public class Write
   
   void h_text(String word, float x, float y)
   {
-    textFont(heading, 28); 
+    textFont(heading, 20); 
     text(word, x, y);
   }
   

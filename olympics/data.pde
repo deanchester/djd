@@ -111,5 +111,17 @@ class Data {
 
     return gender;
   }
+  
+  public float[] getRegions(){
+   float[] region  = new float[5];
+
+    region[0] = (float)london;
+    region[1] = (float)south;
+    region[2] = (float)midlands;
+    region[3] = (float)north;
+    region[4] = (float)scotland;
+    
+    return region;  
+  }
 }
 
