@@ -18,6 +18,9 @@ int answerCount = 0;
   PImage display;
   PImage next;
   PImage back;
+  PImage ageOver;
+  PImage genderOver;
+  PImage social_classOver;
   float data[] = {4,3,5,3};
   PieChart chart = new PieChart(data);
   
@@ -38,8 +41,10 @@ void setup()
    back = loadImage("images/back.png");
   PieChart chart = new PieChart(data);
   
+  ageOver = loadImage("age2.png");
+  genderOver = loadImage("gender2.PNG");
+  social_classOver = loadImage("class2.png");
   
-
   
   fill(255);
   ellipseMode(CENTER);
@@ -108,7 +113,7 @@ void draw()
   //rollover
   for(int i=0; i<tabs.length; i++){
      if(tabs[i].isOver(mouseX,mouseY)){
-        //display image 2 
+         
      }
   }
   
