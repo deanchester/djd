@@ -20,9 +20,7 @@ PImage back;
 PImage ageOver;
 PImage genderOver;
 PImage social_classOver;
-float data[] = {
-  4, 3, 5, 3
-};
+ArrayList <int> data;
 String[] questions;
 BBox qUp;
 BBox qDown;
@@ -49,6 +47,10 @@ void setup()
   parser = new Parser();
   //dataList=parser.getInformationFromTableInCSV("question1.csv");
   dc = parser.getDataContainer();
+  
+  for(int i=0;i<dc.size();i++){
+    data[i] = cd 
+  }
 
   PieChart chart = new PieChart(data);
   ageOver = loadImage("age2.png");

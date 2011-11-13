@@ -1,13 +1,17 @@
 /*PIE CHART*/
 public class PieChart
 {
-   float[] chart_data;
    float data_total;
    boolean points = false;
+   float[] data;
    
    //Constructor accepts an int/float array of data values.
-   PieChart(float[] data)
+   PieChart(ArrayList<int>input)
    {
+     data = new float[input.size()];
+     for(int i=0;i<input.size();i++){
+       data[i] = input.get(i);
+     }
      chart_data = data;
      data_total = total(chart_data);
    }
@@ -74,7 +78,7 @@ public class PieChart
 
 
 /* LINE GRAPH */
-//Line_Graph graph = new Line_Graph(xData,yData);
+//Line_Graph graph = new Line_Graph(xData,yData); 
 //(float x,float y,float xAxisLength,float yAxisLength,float yIntervals,int r,int g,int b,boolean filled)
 //graph.draw_graph(60,100,700,400,20,0,68,204,true);
 public class Line_Graph
