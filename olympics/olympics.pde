@@ -29,7 +29,7 @@ String[] answers = {
 int answerCount = 0;
 
 void setup()
-{
+{ 
   size(800, 700, JAVA2D);
   smooth();
   background(255);
