@@ -90,6 +90,26 @@ class Data {
     ages[0] = (float)young;
     ages[1] = (float)middleAged;
     ages[2] = (float)old;
+
+    return ages;
+  }
+
+  public float[] getClasses() {
+    float[] classes = new float[2];
+
+    classes[0] = (float)upperClass;
+    classes[1] = (float)lowerClass;
+
+    return classes;
+  }
+
+  public float[] getGender() {
+    float[] gender = new float[2];
+
+    gender[0] = (float)male;
+    gender[1] = (float)female;
+
+    return gender;
   }
 }
 
