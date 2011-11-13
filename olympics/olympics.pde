@@ -289,7 +289,9 @@ void mouseClicked() {
   //controlls question scrolling
     for(int k=0;k<2;k++){
       if(qUp.isOver(mouseX,mouseY)){
-        qCount++;
+        if(qCount<dc.size()-1){
+          qCount++; 
+        }
       }
       else if(qDown.isOver(mouseX,mouseY)){
         if(qCount!=0){
