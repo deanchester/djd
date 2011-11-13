@@ -3,8 +3,6 @@ color colours[];
 Write write;
 BBox backnNext[] = new BBox[2];
 
-
-
 PImage ukMap;
 PImage answer;
 PImage age;
