@@ -2,8 +2,8 @@ ColourArray colourSet;
 color colours[];
 Write write;
 BBox backnNext[] = new BBox[2];
-
-
+float arclength = 0;
+float theta = 0;
 
 PImage ukMap;
 PImage answer;
@@ -77,8 +77,8 @@ void setup()
   //End Display Draw
 
   //The Question
-  write.h_text("Q1 Which of the following concern you at present?", 20, 30);
-
+  //write.h_text("Q1 Which of the following concern you at present?", 20, 30);
+  
   //The Answer
   //write.h_text("Terrorism",width/2-170,610);
 
@@ -108,6 +108,7 @@ void draw()
   ellipseMode(CENTER);
   rectMode(CENTER);
   ellipse(width/2, height/2-60, 480, 480);
+   
   image(ukMap, (width/2)-130, 140-60);
 
   image(gender, width/2-180, 607);
@@ -138,8 +139,10 @@ void draw()
   }
 
   image(answer, width/2-200, 550);
-  chart.draw(595, 598, 40, 40);
+  chart.draw(590, 598, 37, 37);
   fill(49, 49, 49);
+
+  
 
   if (dist(mouseX, mouseY, width/2, height/2-60)<=250)
   {
@@ -152,7 +155,7 @@ void draw()
   }
 
   //The Question
-  write.h_text("Q1 Which of the following concern you at present?", 20, 30);
+  //write.h_text("Q1 Which of the following concern you at present?", 20, 30);
 
   //The Answer
   write.h_text(answers[answerCount], width/2-170, 610);
@@ -162,6 +165,50 @@ void draw()
 
   //Back Arrow
   image(back, 130, 545);
+  
+  //Start the circular text.
+  String message = "Which of the following concern you at present?";
+  PFont font = loadFont("myriad.vlw");
+  // The radius of a circle
+  float r = 260;
+  textAlign(CENTER);
+  // Start in the center and draw the circle
+  translate(width/2, height/2-60);
+  
+  // We must keep track of our position along the curve
+ arclength = 0;
+  
+  // For every box
+  for (int i = 0; i < message.length(); i ++ ) {
+    
+    // The character and its width
+    char currentChar = message.charAt(i);
+    // Instead of a constant width, we check the width of each character.
+    float w = textWidth(currentChar); 
+    // Each box is centered so we move half the width
+    arclength += w/2;
+    
+    // Angle in radians is the arclength divided by the radius
+    // Starting on the left side of the circle by adding PI
+    theta = PI + arclength / r;
+    
+    pushMatrix();
+    
+    // Polar to Cartesian conversion allows us to find the point along the curve. See Chapter 13 for a review of this concept.
+    translate(r*cos(theta), r*sin(theta)); 
+    // Rotate the box (rotation is offset by 90 degrees)
+    rotate(theta + PI/2); 
+    
+    // Display the character
+    fill(0);
+    text(currentChar,0,0);
+    
+    popMatrix();
+    
+    // Move halfway again
+    arclength += w/2;
+  }
+  textAlign(LEFT);
 }
 
 void initialise()
