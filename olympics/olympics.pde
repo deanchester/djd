@@ -20,15 +20,15 @@ PImage back;
 PImage ageOver;
 PImage genderOver;
 PImage social_classOver;
-ArrayList <int> data;
+
+//ArrayList <int> data;
 String[] questions;
 BBox qUp;
 BBox qDown;
-
-ArrayList<Data> dataList;
+float[] data = {1,2,3,4,5};
 Parser parser;
 PieChart chart = new PieChart(data);
-  ArrayList<DataContainer> dc;
+ArrayList<DataContainer> dc;
 
 PImage[] rollovers = new PImage[3];
 //index 0:gender 1:age 2:social_class index values apply for both tabs[] and tabFlags[]
@@ -48,14 +48,13 @@ void setup()
   //dataList=parser.getInformationFromTableInCSV("question1.csv");
   dc = parser.getDataContainer();
   
-  for(int i=0;i<dc.size();i++){
-    data[i] = cd 
-  }
+
 
   PieChart chart = new PieChart(data);
   ageOver = loadImage("age2.png");
   genderOver = loadImage("gender2.PNG");
   social_classOver = loadImage("class2.png");
+  
   rollovers[1] = ageOver;
   rollovers[0] = genderOver;
   rollovers[2] = social_classOver;
@@ -93,11 +92,6 @@ void setup()
 
   write.h_text("34%", width/2-20, height/2-50);
   //End Display Draw
-
-  //The Question
-  //write.h_text("Q1 Which of the following concern you at present?", 20, 30);
-  //The Answer
-  //write.h_text("Terrorism",width/2-170,610);
 
   //Next Arrow
   image(next, 620, 545);
@@ -264,21 +258,21 @@ void mouseClicked() {
     if (tabs[i].isOver(mouseX, mouseY)) {
       if (tabFlags[i]==false) {
         switch(i) {
-        case 0:
+        case 0://gender
           {
             tabFlags[0]= true;
             tabFlags[1] = false;
             tabFlags[2] = false;
           }
           break;
-        case 1:
+        case 1://age
           {
             tabFlags[1]= true;
             tabFlags[0]= false;
             tabFlags[2]= false;
           }
           break;
-        case 2:
+        case 2://social class
           {
             tabFlags[2]= true;
             tabFlags[0]= false;
@@ -295,7 +289,7 @@ void mouseClicked() {
   //controlls question scrolling
     for(int k=0;k<2;k++){
       if(qUp.isOver(mouseX,mouseY)){
-        if(qCount<dc.size()-1){
+        if(qCount<dc.size()){
           qCount++; 
         }
       }
