@@ -166,7 +166,7 @@ void draw()
   //Back Arrow
   image(back, 130, 545);
   
-  //Start the circular text.
+    //Start the circular text.
   String message = "Which of the following concern you at present?";
   PFont font = loadFont("myriad.vlw");
   // The radius of a circle
@@ -209,6 +209,7 @@ void draw()
     arclength += w/2;
   }
   textAlign(LEFT);
+
 }
 
 void initialise()
