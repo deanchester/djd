@@ -48,10 +48,12 @@ class Parser {
   public  ArrayList<String> getAnswers(String fileName) {
     ArrayList<String> answers = new ArrayList<String>();
     String[] rawInput = loadStrings(fileName);
-    for (int i = 5; i < rawInput.length; i=i+2) {
+    println("Reading File: " + fileName);
+      for (int i = 4; i < rawInput.length; i=i+2) {
       String information = rawInput[i];
-      String[] partsOfInformation = split(information, ',');   
+      String[] partsOfInformation = split(information, ',');  
       answers.add(partsOfInformation[0]);
+      println("Answer in arrayList: " + partsOfInformation[0]);
     }
 
     return answers;

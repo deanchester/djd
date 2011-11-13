@@ -28,14 +28,14 @@ BBox qDown;
 ArrayList<Data> dataList;
 Parser parser;
 PieChart chart = new PieChart(data);
+  ArrayList<DataContainer> dc;
+
 PImage[] rollovers = new PImage[3];
 //index 0:gender 1:age 2:social_class index values apply for both tabs[] and tabFlags[]
 boolean[] tabFlags = new boolean[3];
 BBox[] tabs = new BBox[3];
 
-String[] answers = {
-  "answer1", "answer2", "answer3", "answer4", "answer5"
-};
+String[] answers;
 int answerCount = 0;
 
 void setup()
@@ -46,6 +46,8 @@ void setup()
   initialise();
   parser = new Parser();
   //dataList=parser.getInformationFromTableInCSV("question1.csv");
+  dc = parser.getDataContainer();
+
   PieChart chart = new PieChart(data);
   ageOver = loadImage("age2.png");
   genderOver = loadImage("gender2.PNG");
@@ -142,21 +144,9 @@ void draw()
   for (int i=0; i<tabs.length; i++) {
     if (tabs[i].isOver(mouseX, mouseY)) {
       switch(i) {
-      case 0:
-        {
-          image(rollovers[i], width/2-180, 607);
-        }
-        break;
-      case 1:
-        {
-          image(rollovers[i], width/2-64, 607);
-        }
-        break;
-      case 2:
-        {
-          image(rollovers[i], width/2+52, 607);
-        }
-        break;
+      case 0: image(rollovers[i], width/2-180, 607); break;
+      case 1: image(rollovers[i], width/2-64, 607); break;
+      case 2: image(rollovers[i], width/2+52, 607); break;
       }
     }
   }
@@ -164,9 +154,9 @@ void draw()
   image(answer, width/2-200, 550);
   chart.draw(590, 598, 37, 37,false);
   fill(49, 49, 49);
-
   
-
+  answers = dc.get(1).getAnswers().toArray(new String[dc.get(1).getAnswers().size()]);
+  
   if (dist(mouseX, mouseY, width/2, height/2-60)<=250)
   {
     //Draw in the display box and value.
@@ -188,9 +178,8 @@ void draw()
 
   //Back Arrow
   image(back, 130, 545);
-  
-    //Start the circular text.
-  String message = "Which of the following concern you at present?";
+  //Start the circular text.
+  String message = dc.get(0).getQuestion();
   PFont font = loadFont("myriad.vlw");
   // The radius of a circle
   float r = 260;
