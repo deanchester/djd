@@ -1,4 +1,4 @@
-class Parser {
+ class Parser {
   Parser(){}
   
   /**
@@ -48,12 +48,10 @@ class Parser {
   public  ArrayList<String> getAnswers(String fileName) {
     ArrayList<String> answers = new ArrayList<String>();
     String[] rawInput = loadStrings(fileName);
-    println("Reading File: " + fileName);
       for (int i = 4; i < rawInput.length; i=i+2) {
       String information = rawInput[i];
       String[] partsOfInformation = split(information, ',');  
       answers.add(partsOfInformation[0]);
-      println("Answer in arrayList: " + partsOfInformation[0]);
     }
 
     return answers;
@@ -68,6 +66,7 @@ class Parser {
       String[] question = split(questionsStr, "\n");
       DataContainer dataContainer = new DataContainer(question[0], getAnswers("q"+i+".csv"), getInformationFromTableInCSV("q"+i+".csv"));
       dataContainers.add(dataContainer);
+      println(dataContainer.toString());
     }
     return dataContainers;
   }

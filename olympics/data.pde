@@ -83,5 +83,13 @@ class Data {
   public int getLowerClass() {
     return lowerClass;
   }
+
+  public float[] getAges() {
+    float[] ages = new float[3];
+
+    ages[0] = (float)young;
+    ages[1] = (float)middleAged;
+    ages[2] = (float)old;
+  }
 }
 
