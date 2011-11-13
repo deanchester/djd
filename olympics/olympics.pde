@@ -3,6 +3,8 @@ color colours[];
 Write write;
 BBox backnNext[] = new BBox[2];
 
+PImage Qup;
+PImage Qdown;
 PImage ukMap;
 PImage answer;
 PImage age;
@@ -17,6 +19,12 @@ PImage social_classOver;
 float data[] = {
   4, 3, 5, 3
 };
+String[] questions;
+BBox qUp;
+BBox qDown;
+
+ArrayList<Data> dataList;
+Parser parser;
 PieChart chart = new PieChart(data);
 PImage[] rollovers = new PImage[3];
 //index 0:gender 1:age 2:social_class index values apply for both tabs[] and tabFlags[]
@@ -29,12 +37,13 @@ String[] answers = {
 int answerCount = 0;
 
 void setup()
-{ 
+{
   size(800, 700, JAVA2D);
   smooth();
   background(255);
   initialise();
-
+  parser = new Parser();
+  //dataList=parser.getInformationFromTableInCSV("question1.csv");
   PieChart chart = new PieChart(data);
   ageOver = loadImage("age2.png");
   genderOver = loadImage("gender2.PNG");
@@ -51,6 +60,8 @@ void setup()
   display = loadImage("images/display.png");
   next = loadImage("images/next.png");
   back = loadImage("images/back.png");
+  Qup = loadImage("up.png");
+  Qdown = loadImage("down.png");
   //PieChart chart = new PieChart(data);
 
   fill(255);
@@ -71,11 +82,7 @@ void setup()
   imageMode(CENTER);
   image(display, width/2, height/2-60);
   imageMode(CORNER);
-  write.h_text("34%", width/2-20, height/2-50);
-  //End Display Draw
-
-  //The Question
-  write.h_text("Q1 Which of the following concern you at present?", 20, 30);
+  
 
   //The Answer
   //write.h_text("Terrorism",width/2-170,610);
@@ -96,18 +103,30 @@ void setup()
   tabs[1] = new BBox(width/2-64, 607, age.width, age.height);
   tabs[2] = new BBox(width/2+52, 607, social_class.width, social_class.height);
   /**** tag BBox's ****/
+  
+  qUp = new BBox(650, 0, Qup.width, Qup.height);
+  qDown = new BBox(650, 60, Qdown.width, Qdown.height);
 }
 
 void draw()
 {
   background(255);
   fill(255);
+  write.h_text("34%", width/2-20, height/2-50);
+  //End Display Draw
+
+  //The Question
+  write.h_text("Q1 Which of the following concern you at present?", 20, 30);
+  
+  image(Qup, 650, 0);
+  image(Qdown, 650, 60);
+  
   chart.draw(width/2, height/2-60, 250, 250);
   ellipseMode(CENTER);
   rectMode(CENTER);
   ellipse(width/2, height/2-60, 480, 480);
   image(ukMap, (width/2)-130, 140-60);
-
+  
   image(gender, width/2-180, 607);
   image(age, width/2-64, 607);
   image(social_class, width/2+52, 607);
@@ -222,5 +241,14 @@ void mouseClicked() {
       }
     }
   }
+  //controlls question scrolling
+    for(int k=0;k<2;k++){
+      if(qUp.isOver(mouseX,mouseY)){
+        //question counter ++
+      }
+      else if(qDown.isOver(mouseX,mouseY)){
+        //question counter --
+      }  
+    }
 }
 
