@@ -20,4 +20,8 @@ class DataContainer {
  public ArrayList<Data> getData(){
    return data; 
  }
+ 
+ public String toString(){
+    return question; 
+ }
 }

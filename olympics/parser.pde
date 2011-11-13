@@ -1,10 +1,12 @@
 class Parser {
+  Parser(){}
+  
   /**
    *This method takes in a CSV file then returns the data from the table in the CSV file
    *@param String fileName must be a filename plus the directory. 
    *@return ArrayList with data objects that contain the numbers. 
    */
-  public ArrayList<Data> getInformationFromTableInCSV(String fileName) {
+  public  ArrayList<Data> getInformationFromTableInCSV(String fileName) {
     ArrayList<Data> dataList = new ArrayList<Data>();
     String[] rawInput = loadStrings(fileName);
     for (int i = 6; i < rawInput.length; i=i+2) {
@@ -23,6 +25,7 @@ class Parser {
       Integer.parseInt(removePercentageSymbol(partsOfInformation[11])), 
       Integer.parseInt(removePercentageSymbol(partsOfInformation[12])), 
       Integer.parseInt(removePercentageSymbol(partsOfInformation[13])));
+      
       dataList.add(data);
     }
 
@@ -35,11 +38,14 @@ class Parser {
    * @return String that can be parsed to an Integer
    */
   public String removePercentageSymbol(String stringToRemovePercentageSignFrom) {
-    int stringLength = stringToRemovePercentageSignFrom.length();
-    return stringToRemovePercentageSignFrom.substring(0, stringLength-1);
+      if(stringToRemovePercentageSignFrom.substring(stringToRemovePercentageSignFrom.length()-1, stringToRemovePercentageSignFrom.length()).equals("%"))
+        return stringToRemovePercentageSignFrom.substring(0,stringToRemovePercentageSignFrom.length()-1);
+       else {
+         return stringToRemovePercentageSignFrom;
+       }
   }
 
-  public ArrayList<String> getAnswers(String fileName) {
+  public  ArrayList<String> getAnswers(String fileName) {
     ArrayList<String> answers = new ArrayList<String>();
     String[] rawInput = loadStrings(fileName);
     for (int i = 5; i < rawInput.length; i=i+2) {
@@ -51,14 +57,14 @@ class Parser {
     return answers;
   }
 
-  public ArrayList<DataContainer> getDataContainer() {
-    String fileName = "";
+  public  ArrayList<DataContainer> getDataContainer() {
+    String fileName = "questions.txt";
     String[] questions = loadStrings(fileName);
     ArrayList<DataContainer> dataContainers = new ArrayList<DataContainer>();
     for (int i = 0;i<questions.length;i++) {
       String questionsStr = questions[i];
       String[] question = split(questionsStr, "\n");
-      DataContainer dataContainer = new DataContainer(question[0], getAnswers(question[0]), getInformationFromTableInCSV(question[0]));
+      DataContainer dataContainer = new DataContainer(question[0], getAnswers("q"+i+".csv"), getInformationFromTableInCSV("q"+i+".csv"));
       dataContainers.add(dataContainer);
     }
     return dataContainers;
